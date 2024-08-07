@@ -1,0 +1,36 @@
+<ng-container     *ngIf="isLoading ; else loading">
+  <app-loading></app-loading>
+</ng-container>
+
+
+<ng-template #loading>
+  <div class="container"  >
+    <div  >
+      <div class="user_list ">
+        <div class="card" *ngFor="let user of users" (click)="navigateToUserDetails(user.id)">
+          <img [src]="user.avatar" alt="User Avatar" style="height: 300px;"/>
+          <div class="card-body">
+            <p>{{ user.first_name }} {{ user.last_name }}</p>
+          <p>email : {{user.email}}</p>
+          </div>
+        </div>
+      </div>
+
+
+      <nav aria-label="Page navigation example" class="pagination_nav" >
+        <ul class="pagination">
+          <li class="page-item" [class.disabled]="currentPage === 1">
+            <a class="page-link" (click)="navigateToPage(currentPage - 1)" aria-label="Previous">&laquo;</a>
+          </li>
+          <li class="page-item" [class.active]="currentPage === page" *ngFor="let page of pages">
+            <a class="page-link" (click)="navigateToPage(page)">{{ page }}</a>
+          </li>
+          <li class="page-item" [class.disabled]="currentPage === numberOfPages">
+            <a class="page-link" (click)="navigateToPage(currentPage + 1)" aria-label="Next">&raquo;</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+</ng-template>

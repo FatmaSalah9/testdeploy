@@ -1,0 +1,25 @@
+
+<ng-container     *ngIf="isLoading ; else loading">
+  <app-loading></app-loading>
+</ng-container>
+
+
+<ng-template #loading>
+  <div *ngIf="user" class="container">
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4" >
+          <img [src]="user.avatar"  class="img-fluid rounded-start" alt="user avatar">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
+            <p class="card-text">Email : {{user.email }}</p>
+            <p class="card-text"><small class="text-body-secondary">ID : {{ user.id }}</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-secondary m-4 px-5" (click)="goBack()">Back</button>
+  </div>
+</ng-template>
