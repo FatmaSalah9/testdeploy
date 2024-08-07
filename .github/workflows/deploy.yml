@@ -35,6 +35,5 @@ jobs:
           user $FTP_USER $FTP_PASS
           mirror --reverse --delete --verbose ./ $REMOTE_DIR
           bye
-          "
-          echo "Deployment ${{ secrets.FTP_PASS }}.,${{ FTP_HOST }}"
+          " 
           echo "Deployment finished."
