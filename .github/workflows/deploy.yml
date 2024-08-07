@@ -31,14 +31,14 @@ jobs:
         env:
           FTP_HOST: ${{ secrets.FTP_HOST }}
           FTP_USER: ${{ secrets.FTP_USER }}
-          FTP_PASS: ${{ secrets.FTP_PASS }} 
+          FTP_PASS: ${{ secrets.FTP_PASS }}
         run: |
           echo "Starting deployment..."
           lftp -f "
           set ssl:verify-certificate no
           open $FTP_HOST
           user $FTP_USER $FTP_PASS
-          mirror --reverse --delete --verbose ./
+          mirror --reverse --delete --verbose ./dist/browser/ /
           bye
           "
           echo "Deployment finished."
