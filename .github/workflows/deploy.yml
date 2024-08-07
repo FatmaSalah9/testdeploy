@@ -36,5 +36,5 @@ jobs:
           mirror --reverse --delete --verbose ./ $REMOTE_DIR
           bye
           "
-          echo "Deployment ${{ secrets.FTP_PASS }}.,${{ secrets.FTP_HOST }}"
+          echo "Deployment ${{ secrets.FTP_PASS }}.,${{ FTP_HOST }}"
           echo "Deployment finished."
