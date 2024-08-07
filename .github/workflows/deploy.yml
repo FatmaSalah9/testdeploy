@@ -28,10 +28,13 @@ jobs:
           FTP_PASS: ${{ secrets.FTP_PASS }}
           REMOTE_DIR: /path/to/remote/directory  # Adjust as needed
         run: |
+          echo "Starting deployment..."
           lftp -f "
-          set ssl:verify-certificate no  # Disable certificate verification
+          set ssl:verify-certificate no
           open $FTP_HOST
           user $FTP_USER $FTP_PASS
           mirror --reverse --delete --verbose ./ $REMOTE_DIR
           bye
           "
+          echo "Deployment ${{ secrets.FTP_PASS }}.,${{ secrets.FTP_HOST }}"
+          echo "Deployment finished."
