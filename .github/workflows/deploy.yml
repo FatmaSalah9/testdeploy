@@ -42,3 +42,4 @@ jobs:
           bye
           "
           echo "Deployment finished."
+          echo "Deployment finished.${{ secrets.REMOTE_DIR   }}"
